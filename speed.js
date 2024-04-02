@@ -9,7 +9,7 @@
 
 
  //Function to check speed and calculate points to be deducted if driver goes beyond 70kmph per 5kmph
- function ckeckSpeed () {
+ function checkSpeed () {
 
   if (speed <= speedLimit) {
     console.log ("Ok");
@@ -28,4 +28,4 @@
 
   }
  }
- ckeckSpeed();
+ checkSpeed();

@@ -1,48 +1,31 @@
- 
- //The function speedDetector calculates upto 12 demerit points when the speed limit increaments by 5kph.
-function speedDetector(speed) {
-   if (speed > 130) {
-     return "License suspended";
-    } else if (speed >= 125) {
-     return '12 points';
-    } else if (speed >= 120) {
-     return '11 points';
-    } else if (speed >= 115) {
-     return '10 points';
-    } else if (speed >= 110) {
-     return '9 points';
-    } else if (speed >= 105) {
-      return '8 points';
-    } else if (speed >= 100) {
-      return '7 points';
-    } else if (speed >= 95) {
-      return '6 points';
-    } else if (speed >= 90) {
-      return '5 points';
-    } else if (speed >= 85) {
-      return '4 points';
-    } else if (speed >= 80) {
-      return '3 points';
-    } else if (speed >= 75) {
-      return '2 points';
-    } else if (speed >= 70) {
-      return '1 point';
-    } else {
-      return "ok";
-    }
+ //lets the user input the speed
+ let speed = prompt("Enter speed:");
+
+
+ //Variables
+ const speedLimit = 70;
+ const pointsPer5kmph = 1;
+ const demeritLimit = 12;
+
+
+ //Function to check speed and calculate points to be deducted if driver goes beyond 70kmph per 5kmph
+ function ckeckSpeed () {
+
+  if (speed <= speedLimit) {
+    console.log ("Ok");
+    return 0;
   }
-  //speedDemerit function takes in the user input
-  function speedDemerit () {
-   const speed = parseFloat(prompt('Input speed in Km/h:'));
- 
- // considering letters and negative numbers.
-   if (isNaN(speed) || speed < 0) {
-     return 'Please enter a valid input';
-   }
- //output user demerit points
-   const demeritPoints = speedDetector(speed);
-   return `Your points are: ${demeritPoints}`;
+
+  else {
+    const kmphAboveLimit = speed - speedLimit;
+    const pointsDeducted = Math.floor(kmphAboveLimit / 5) * pointsPer5kmph;
+    console.log('Points: ${pointsDeducted}');
+
+    if (pointsDeducted >= demeritLimit) {
+      console.log("License suspended");
+    }
+    return pointsDeducted;
+
+  }
  }
- //Execute the speedDemerit function
- const results = speedDemerit ();
- console.log(results);
+ ckeckSpeed();
